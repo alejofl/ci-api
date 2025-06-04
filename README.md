@@ -99,3 +99,14 @@ model SomeNewModel {
 ```
 
 and run `npm run migrate`.
+
+
+## Continuous Integration
+
+We use GitHub Actions to run the tests and build the application on every push to the `master` branch. The workflow is defined in `.github/workflows/test-build-push.yml`.
+
+The workflow will:
+
+* Test the application with `npm run test`.
+* Build the Docker image.
+* Push the Docker image to the registry, using the package version from `package.json` as the tag.
