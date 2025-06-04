@@ -1,5 +1,6 @@
 import fastify from 'fastify';
 import { PrismaClient } from '@prisma/client';
+import { squared, cubed } from './services/maths';
 
 const prisma = new PrismaClient();
 
@@ -15,8 +16,10 @@ server.get('/ping', async (_, reply) => {
     });
 
     const count = await prisma.counter.count();
+    const squaredCount = squared(count);
+    const cubedCount = cubed(count);
 
-    return reply.status(200).send({ count });
+    return reply.status(200).send({ count, squaredCount, cubedCount });
   } catch (error: any) {
     return reply.status(500).send({ error: error?.message });
   }

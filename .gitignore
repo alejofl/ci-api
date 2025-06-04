@@ -3,3 +3,4 @@ node_modules
 # for this example we keep it
 # .env
 dist
+coverage
